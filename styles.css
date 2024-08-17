@@ -43,6 +43,7 @@ body, html {
 /* Gallery Styles */
 .gallery {
     display: none;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -76,13 +77,58 @@ body, html {
     box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
 }
 
+/* Left Wall */
 .left-wall {
-    transform: skewY(5deg);
+    display: flex;
+    flex-direction: row; /* Arrange frames horizontally */
+    align-items: center;
+    justify-content: flex-start; /* Start from the left */
+    background: linear-gradient(45deg, #d7d2cc, #304352);
+    border-right: 10px solid #333;
+    padding: 20px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+    overflow-x: auto; /* Allow horizontal scrolling */
+    white-space: nowrap; /* Prevent line breaks */
+    width: 50%; /* Occupy half of the gallery width */
+}
+/* Right Wall */
+.right-wall {
+    display: flex;
+    flex-direction: row; /* Arrange frames horizontally */
+    align-items: center;
+    justify-content: flex-end; /* Start from the right */
+    background: linear-gradient(135deg, #f6f1e7, #e9e4d4);
+    border-left: 10px solid #333;
+    padding: 20px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+    overflow-x: auto; /* Allow horizontal scrolling */
+    white-space: nowrap; /* Prevent line breaks */
+    width: 50%; /* Occupy half of the gallery width */
 }
 
-.right-wall {
-    transform: skewY(-5deg);
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 20px; /* Distance from the top of the room */
+    left: 50%; /* Position to the middle horizontally */
+    transform: translateX(-50%); /* Adjust position to center the button */
+    background-color: #ff5f5f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it stays on top */
 }
+
+.close-btn:hover {
+    background-color: #ff2f2f;
+}
+
+
 
 .frame {
     width: 200px;
@@ -91,6 +137,17 @@ body, html {
     border: 10px solid #8b4513;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     overflow: hidden;
+    margin: 0 10px;
+}
+
+.left-wall .frame {
+    float: left;
+    margin-left: 10%;
+}
+
+.right-wall .frame {
+    float: right;
+    margin-right: 10%;
 }
 
 .frame img {
@@ -111,6 +168,7 @@ body, html {
     z-index: 1;
 }
 
+/* Flowerpot Styling */
 .flowerpot {
     position: absolute;
     bottom: -25px;
@@ -139,4 +197,34 @@ body, html {
 /* Cursor Styles */
 .grabbing {
     cursor: grabbing;
+}
+
+
+/* Arrow Buttons Container */
+.arrow-buttons {
+    position: absolute;
+    bottom: 10px; /* Position just below the room */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 150px; /* Adjust width as needed */
+    z-index: 1000; /* Ensure they stay on top */
+}
+
+/* Arrow Button Styles */
+.arrow-button {
+    background-color: #3e3e3e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.arrow-button:hover {
+    background-color: #2b2b2b;
 }
